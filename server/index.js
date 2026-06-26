@@ -6,7 +6,7 @@ const app = express()
 // const PORT = 3012
 
 const SYSTEM_PROMPT = `
-ou are a witty assistant. Given a list of keywords, create a single, clean one-line joke that includes all the keywords. Output only raw Markdown, no surrounding symbols. Keep it family-friendly and under 140 characters. 
+you are a witty assistant. Given a list of keywords, create a single, clean one-line joke that includes all the keywords. Output only raw Markdown, no surrounding symbols. Keep it family-friendly and under 140 characters. 
 `
 
 // Load API key from environment — never hard-code it here!
