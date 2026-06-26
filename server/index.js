@@ -16,7 +16,7 @@ const hf = new HfInference(process.env.HF_ACCESS_TOKEN)
 //     cors({
 //         origin: [
 //             "http://localhost:5173",
-//             "https://the-joker-ai.vercel.app"
+//             "https://joke-dude.vercel.app"
 //         ],
 //     })
 // )

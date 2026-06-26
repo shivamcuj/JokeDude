@@ -1,11 +1,13 @@
-# The Joker AI
+# Joke Dude
 
-The Joker AI is a small web app that generates jokes from user-provided keywords. It uses a React + Vite frontend to collect keywords and render Markdown, and an Express-based backend that proxies requests to the Hugging Face ChatCompletion model. The backend sends a system prompt to the model (configurable) instructing it how to format jokes; the model's Markdown output is rendered in the browser with `react-markdown`.
+Joke Dude is a small web app that generates jokes from user-provided keywords. It uses a React + Vite frontend to collect keywords and render Markdown, and an Express-based backend that proxies requests to the Hugging Face ChatCompletion model. The backend sends a system prompt to the model (configurable) instructing it how to format jokes; the model's Markdown output is rendered in the browser with `react-markdown`.
 
-Features
-- Provide a list of keywords and receive a joke that includes them.
-- Markdown-formatted output rendered client-side.
-- Backend proxies calls to Hugging Face so the API key never reaches the browser.
+## Features
+- Provide a list of keywords and receive a joke that includes them
+- Edit and delete keywords directly in the interface with inline editing support
+- Undo keyword changes for quick recovery
+- Markdown-formatted output rendered client-side
+- Backend proxies calls to Hugging Face so the API key never reaches the browser
 
 Prerequisites
 - Node.js (v18+ recommended)
@@ -53,7 +55,7 @@ Option B — run the Express app directly (quick hack for local testing):
 
 ```
 HF_ACCESS_TOKEN=your_hf_token_here
-SYSTEM_PROMPT=You are a friendly joke-writing assistant. Use the provided keywords and return raw Markdown.
+SYSTEM_PROMPT=You are a witty assistant. Given a list of keywords, create a single, clean one-line joke that includes all the keywords. Output only raw Markdown, no surrounding symbols. Keep it family-friendly and under 140 characters.
 PORT=3012
 ```
 

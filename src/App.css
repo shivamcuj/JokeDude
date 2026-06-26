@@ -16,6 +16,12 @@ header {
     border-radius: 5px;
 }
 
+#joker {
+    height: 4rem;
+    width: 3rem;
+    border-radius: 5px;
+}
+
 #joker-text {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: xx-large;
