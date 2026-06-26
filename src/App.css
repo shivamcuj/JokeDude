@@ -27,6 +27,123 @@ header {
     font-size: xx-large;
 }
 
+#info-button {
+    background: none;
+    border: 2px solid #190d01;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    color: #190d01;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 20px;
+}
+
+#info-button:hover {
+    background-color: #f6d9bd;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#info-button:active {
+    transform: translateY(0);
+}
+
+#info-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+#info-content {
+    background-color: white;
+    padding: 32px;
+    border-radius: 16px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+#close-info {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #6b7280;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+#close-info:hover {
+    background-color: #f3f4f6;
+    color: #374151;
+    transform: rotate(90deg);
+}
+
+#info-content h3 {
+    margin: 0 0 20px 0;
+    color: #190d01;
+    font-size: 1.5rem;
+}
+
+#info-content ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+#info-content li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+#info-content strong {
+    color: #190d01;
+    font-weight: 600;
+}
+
+#info-content ul {
+    margin: 8px 0 0 16px;
+    padding-left: 12px;
+}
+
+#info-content code {
+    background-color: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
 /* Main container */
 main {
     max-width: 700px;
