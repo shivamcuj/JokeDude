@@ -1,16 +1,17 @@
 import express from "express"
 import cors from "cors"
-import { HfInference } from "@huggingface/inference"
+import { GoogleGenerativeAI } from "@google/generative-ai"
 
 const app = express()
 // const PORT = 3012
 
 const SYSTEM_PROMPT = `
-you are a witty assistant. Given a list of keywords, create a single, clean one-line joke that includes all the keywords. Output only raw Markdown, no surrounding symbols. Keep it family-friendly and under 140 characters. 
+you are a witty assistant. Given a list of keywords, create a single, clean one-line joke that includes all the keywords. Output only raw Markdown, no surrounding symbols. Keep it family-friendly and under 140 characters.
 `
 
 // Load API key from environment — never hard-code it here!
-const hf = new HfInference(process.env.HF_ACCESS_TOKEN)
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" })
 
 // app.use(
 //     cors({
@@ -35,19 +36,15 @@ app.post("/api/joke", async (req, res) => {
     const ingredientsString = keywords.join(", ")
 
     try {
-        const response = await hf.chatCompletion({
-            model: "Qwen/Qwen2.5-72B-Instruct",
-            messages: [
-                { role: "system", content: SYSTEM_PROMPT },
-                { role: "user", content: `I have ${ingredientsString}. Please give me a joke!` },
-            ],
-            max_tokens: 1024,
-        })
+        const result = await model.generateContent([
+            SYSTEM_PROMPT,
+            `I have ${ingredientsString}. Please give me a joke!`
+        ])
 
-        const joke = response.choices[0].message.content
+        const joke = result.response.text()
         return res.json({ joke })
     } catch (err) {
-        console.error("HuggingFace API error:", err.message)
+        console.error("Gemini API error:", err.message)
         return res.status(500).json({ error: "Failed to generate joke. Please try again." })
     }
 })
